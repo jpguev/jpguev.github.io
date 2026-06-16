@@ -176,7 +176,7 @@ body {
     border-color: rgba(79, 195, 247, 0.35);
 }
 
-    
+
 
 .project-card::before {
     content: '';
@@ -525,4 +525,143 @@ body {
 .glow-2 {
     bottom: 200px;
     right: 100px;
+}
+
+/* Skill Icon Styling */
+.skill-icon {
+    font-size: 2.5rem;
+    color: #4fc3f7;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.15) rotate(5deg);
+    color: #00bcd4;
+}
+
+/* Light Mode Theme */
+[data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --border-color: rgba(0, 188, 212, 0.15);
+    --accent-color: #00acc1;
+    --accent-light: #4fc3f7;
+}
+
+[data-theme="light"] body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .navbar {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .navbar-nav .nav-link {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .navbar-nav .nav-link:hover {
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .section-title::after {
+    background: var(--accent-color);
+}
+
+[data-theme="light"] .education-card,
+[data-theme="light"] .contact-card,
+[data-theme="light"] .about-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .skill-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .skill-pill {
+    background: rgba(0, 172, 193, 0.08);
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .skill-card p,
+[data-theme="light"] .hero-text,
+[data-theme="light"] .about p {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .skill-icon {
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 30px rgba(0, 172, 193, 0.1);
+}
+
+[data-theme="light"] .project-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 50px rgba(0, 172, 193, 0.2);
+}
+
+[data-theme="light"] .project-card .card-title,
+[data-theme="light"] .project-card .card-text {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .service-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent-color);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .footer-details {
+    background: #f5f5f5;
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .footer-details a {
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .contact-card strong,
+[data-theme="light"] .contact-card span {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .hero h1 span {
+    color: var(--accent-color);
+}
+
+[data-theme="light"] .about h2::after,
+[data-theme="light"] .services h2::after {
+    background: var(--accent-color);
+}
+
+[data-theme="light"] #themeToggle {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] #themeToggle:hover {
+    color: var(--accent-color);
+}
+
+/* Service icon light mode */
+[data-theme="light"] .service-icon {
+    background: rgba(0, 172, 193, 0.08);
+    border: 1px solid var(--border-color);
+    color: var(--accent-color);
 }
