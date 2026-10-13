@@ -50,6 +50,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+
+                    <li class="nav-item">
                         <button id="themeToggle" class="btn btn-link nav-link" title="Toggle light/dark mode">
                             <i class="fas fa-moon"></i>
                         </button>
@@ -347,6 +351,21 @@
         </div>
     </section>
 
+    <section id="gallery" class="gallery-section">
+        <div class="container-fluid">
+            <div class="gallery-heading">
+                <div>
+                    <p class="gallery-kicker">There was a time...</p>
+                    <h2 class="section-title">Photo Gallery</h2>
+                </div>
+                <a class="gallery-open-link" href="grid.html" target="_blank" rel="noopener">
+                    Open gallery <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </a>
+            </div>
+            <iframe id="galleryFrame" class="gallery-frame" src="grid.html" title="Photo gallery"></iframe>
+        </div>
+    </section>
+
     <footer class="footer-details">
         <div class="container">
             <p>© 2026 John Paolo Aala. Built with passion and creativity.</p>
@@ -355,11 +374,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const htmlElement = document.documentElement;
-        
-        // Check saved theme preference or default to dark
         const savedTheme = localStorage.getItem('theme') || 'dark';
         htmlElement.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
@@ -370,6 +386,7 @@
             htmlElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
+            syncGalleryTheme();
         });
         
         function updateThemeIcon(theme) {
@@ -382,6 +399,27 @@
                 icon.classList.add('fa-moon');
             }
         }
+
+        const galleryFrame = document.getElementById('galleryFrame');
+        function syncGalleryTheme() {
+            galleryFrame.contentWindow.postMessage({
+                type: 'gallery-theme',
+                theme: htmlElement.getAttribute('data-theme')
+            }, '*');
+        }
+
+        galleryFrame.addEventListener('load', syncGalleryTheme);
+        if (galleryFrame.contentDocument.readyState === 'complete') {
+            syncGalleryTheme();
+        }
+
+        window.addEventListener('message', (event) => {
+            if (event.source !== galleryFrame.contentWindow || !event.data || event.data.type !== 'gallery-height') {
+                return;
+            }
+
+            galleryFrame.style.height = `${event.data.height}px`;
+        });
     </script>
 
 </body>
