@@ -830,11 +830,6 @@ html[data-theme="light"] .portrait-card img {
     border-color: var(--line-strong);
 }
 
-.gallery-section {
-    border-top: 1px solid var(--line);
-    background: var(--section-tint);
-}
-
 .gallery-heading {
     display: flex;
     align-items: flex-end;
